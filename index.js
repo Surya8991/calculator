@@ -1,19 +1,18 @@
-let result=document.getElementById("inputOutput");
-let calculate=(number)=>{
-    result.value+=number;
-}
-let Result=()=>{
-try {
-    result.value=eval(result.value)
-} catch (err) {
-    alert("Enter the valid Input");
-}
-}
-
-function clr()
-{
-    result.value="";
-}
-function del(){
-    result.value=result.value.slice(0,-1);
-}
+let string=''
+let buttons=document.querySelectorAll(".button")
+Array.from(buttons).forEach((button)=>{
+    button.addEventListener('click',(e)=>{
+        if(e.target.innerHTML=='='){
+            string=eval(string)
+            document.querySelector('input').value=string
+        }
+       else if(e.target.innerHTML=='C'){
+            string=''
+            document.querySelector('input').value=string
+        }
+        else{
+            string=string+e.target.innerHTML
+            document.querySelector('input').value=string
+        }
+    })
+})
